@@ -4,6 +4,16 @@ import Order from './Order';
 import Inventory from './Inventory';
 
 class App extends Component {
+  state = {
+    fishes: {},
+    order: {}
+  };
+
+  handleAddFish = whatever => {
+    //const fishes = { ...this.state.fishes };
+    console.log('Adding A Fish');
+  };
+
   render() {
     return (
       <div className="catch-of-the-day">
@@ -11,7 +21,7 @@ class App extends Component {
           <Header tagline="Fresh Seafood Market" />
         </div>
         <Order />
-        <Inventory />
+        <Inventory addFishProp={this.handleAddFish} />
       </div>
     );
   }

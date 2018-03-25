@@ -16,7 +16,9 @@ class AddFishForm extends Component {
 			desc: this.descRef.value.value,
 			image: this.imageRef.value.value
 		};
-		console.log(fish);
+		this.props.addFishProp(fish);
+		// Refresh the Form on submit to clear it
+		event.currentTarget.reset();
 	};
 
 	render() {
