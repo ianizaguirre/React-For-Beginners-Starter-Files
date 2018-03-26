@@ -9,9 +9,18 @@ class App extends Component {
     order: {}
   };
 
-  handleAddFish = whatever => {
-    //const fishes = { ...this.state.fishes };
-    console.log('Adding A Fish');
+  handleAddFish = fishObjectPassedIn => {
+    const fishes = { ...this.state.fishes };
+
+    fishes[`fish${Date.now()}`] = fishObjectPassedIn;
+
+    this.setState({
+      fishes: fishes
+    });
+  };
+
+  loadSampleFishes = () => {
+    alert('Loading Sample');
   };
 
   render() {
@@ -21,7 +30,7 @@ class App extends Component {
           <Header tagline="Fresh Seafood Market" />
         </div>
         <Order />
-        <Inventory addFishProp={this.handleAddFish} />
+        <Inventory addFishProp={this.handleAddFish} loadSampleFishes={this.loadSampleFishes} />
       </div>
     );
   }
