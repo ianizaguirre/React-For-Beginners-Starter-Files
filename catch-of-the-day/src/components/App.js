@@ -32,9 +32,16 @@ class App extends Component {
       <div className="catch-of-the-day">
         <div className="menu">
           <Header tagline="Fresh Seafood Market" />
+
+          <ul className="fishes">
+            {Object.keys(this.state.fishes).map(key => <p key={key}>{key}</p>)}
+          </ul>
         </div>
         <Order />
-        <Inventory addFishProp={this.handleAddFish} loadSampleFishes={this.loadSampleFishes} />
+        <Inventory
+          addFishProp={this.handleAddFish}
+          loadSampleFishes={this.loadSampleFishes}
+        />
       </div>
     );
   }
