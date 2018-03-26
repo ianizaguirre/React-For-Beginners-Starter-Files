@@ -4,6 +4,7 @@ import Order from './Order';
 import Inventory from './Inventory';
 
 import sampleFishes from '../sample-fishes';
+import FishDummy from './FishDummy';
 
 class App extends Component {
   state = {
@@ -34,7 +35,9 @@ class App extends Component {
           <Header tagline="Fresh Seafood Market" />
 
           <ul className="fishes">
-            {Object.keys(this.state.fishes).map(key => <p key={key}>{key}</p>)}
+            {Object.keys(this.state.fishes).map(key => (
+              <FishDummy key={key} dummyDetails={this.state.fishes[key]} />
+            ))}
           </ul>
         </div>
         <Order />
