@@ -3,6 +3,8 @@ import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
 
+import sampleFishes from '../sample-fishes';
+
 class App extends Component {
   state = {
     fishes: {},
@@ -20,7 +22,9 @@ class App extends Component {
   };
 
   loadSampleFishes = () => {
-    alert('Loading Sample');
+    this.setState({
+      fishes: sampleFishes
+    });
   };
 
   render() {
