@@ -4,7 +4,6 @@ import Order from './Order';
 import Inventory from './Inventory';
 
 import sampleFishes from '../sample-fishes';
-import Fish from './Fish';
 
 class App extends Component {
   state = {
@@ -35,11 +34,14 @@ class App extends Component {
           <Header tagline="Fresh Seafood Market" />
 
           <ul className="fishes">
-            {Object.keys(this.state.fishes).map(key => <Fish key={key} iterateDetails={this.state.fishes[key]} />)}
+            {Object.keys(this.state.fishes).map(key => <p key={key}>{key}</p>)}
           </ul>
         </div>
         <Order />
-        <Inventory addFishProp={this.handleAddFish} loadSampleFishes={this.loadSampleFishes} />
+        <Inventory
+          addFishProp={this.handleAddFish}
+          loadSampleFishes={this.loadSampleFishes}
+        />
       </div>
     );
   }
