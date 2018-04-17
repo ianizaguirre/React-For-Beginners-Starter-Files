@@ -3,6 +3,8 @@ import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
 
+import base from '../base';
+
 import sampleFishes from '../sample-fishes';
 import Fish from './Fish';
 
@@ -11,6 +13,19 @@ class App extends Component {
     fishes: {},
     order: {}
   };
+
+  componentDidMount() {
+    // Destructure this => ${this.props.match.params.storeId}
+    const { params } = this.props.match;
+    this.ref = base.syncState(`${params.storeId}/fishes`, {
+      context: this,
+      state: `fishes`
+    });
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
 
   handleAddFish = fishObjectPassedIn => {
     const fishes = { ...this.state.fishes };
