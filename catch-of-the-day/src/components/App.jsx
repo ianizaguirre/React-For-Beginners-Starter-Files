@@ -17,6 +17,13 @@ class App extends Component {
   componentDidMount() {
     // Destructure this => ${this.props.match.params.storeId}
     const { params } = this.props.match;
+
+    // First Reinstate our localStorage
+    const localStorageRef = localStorage.getItem(params.storeId);
+    if (localStorageRef) {
+      this.setState({ order: JSON.parse(localStorageRef) });
+    }
+
     this.ref = base.syncState(`${params.storeId}/fishes`, {
       context: this,
       state: `fishes`
@@ -25,6 +32,11 @@ class App extends Component {
 
   componentWillUnmount() {
     base.removeBinding(this.ref);
+  }
+
+  componentDidUpdate() {
+    console.log('It Updated!');
+    localStorage.setItem(this.props.match.params.storeId, JSON.stringify(this.state.order));
   }
 
   handleAddFish = fishObjectPassedIn => {
