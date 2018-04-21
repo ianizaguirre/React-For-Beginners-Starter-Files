@@ -1,0 +1,10 @@
+{
+  // "emmet.syntaxProfiles": {
+  //   "javascript": "javascriptreact"
+  // }
+
+  "[javascript]": {
+    "editor.rulers": [80],
+    "editor.wordWrapColumn": 80,
+  }
+}
